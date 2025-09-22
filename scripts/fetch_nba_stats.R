@@ -1,4 +1,5 @@
 # scripts/fetch_nba_stats.R
+Sys.setenv(HOOPR_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36")
 library(hoopR)
 library(dplyr)
 library(readr)

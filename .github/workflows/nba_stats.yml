@@ -3,7 +3,7 @@ name: Fetch NBA Stats
 on:
   schedule:
     - cron: "0 12 * * *"   # 8am EST (12:00 UTC)
-  workflow_dispatch:       # allows manual trigger
+  workflow_dispatch:
 
 jobs:
   build:
@@ -18,9 +18,7 @@ jobs:
 
       - name: Install R dependencies
         run: |
-          Rscript -e 'install.packages(c("dplyr"))'
-          Rscript -e 'if(!requireNamespace("nbastatR")) devtools::install_github("abresler/nbastatR")'
-          Rscript -e 'install.packages("devtools")'
+          Rscript -e 'install.packages(c("httr","jsonlite","dplyr","readr"))'
 
       - name: Run NBA Stats script
         run: Rscript scripts/fetch_nba_stats.R
@@ -30,5 +28,5 @@ jobs:
           git config --local user.name "github-actions"
           git config --local user.email "github-actions@github.com"
           git add data/*.csv
-          git commit -m "Update NBA stats CSVs"
+          git commit -m "Update NBA stats CSVs" || echo "No changes to commit"
           git push

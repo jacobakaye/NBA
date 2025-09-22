@@ -1,5 +1,6 @@
 # scripts/fetch_nba_stats.R
-library(nbastatR)
+library(hoopR)
+library(tidyverse)
 library(dplyr)
 
 # Create output directory
